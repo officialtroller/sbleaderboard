@@ -1,0 +1,708 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    outline-color: #fff;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color-scheme: dark;
+    background-image: url("https://starblast.io/static/img/bg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 3em;
+    color: hsla(200, 30%, 30%, 1);
+    text-transform: uppercase;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px, 0 0 40px;
+    font-family: 'Starcraft', 'Orbitron', Arial, sans-serif;
+}
+
+.region-switch {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.region-switch button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: radial-gradient(ellipse at center, hsla(200, 50%, 0%, 1) 20%, hsla(200, 50%, 60%, .5) 150%);
+    color: hsla(200, 100%, 90%, .8);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.5em;
+    transition: 0.3s;
+    font-family: "Play", sans-serif;
+    box-shadow: 0 0 6px hsla(200, 100%, 80%, 1);
+    width: 180px;
+}
+
+.region-switch button:hover {
+    background: hsla(200, 100%, 60%, .75);
+}
+
+.region-switch button.active {
+    background: radial-gradient(ellipse at center, hsla(20, 50%, 0%, 1) 20%, hsla(20, 50%, 60%, .7) 150%);
+    color: #fff;
+    text-shadow: 0 0 10px;
+    box-shadow: none;
+    cursor: default;
+    box-shadow: 0 0 6px hsla(20, 100%, 80%, 1);
+    text-shadow: 0 0 7px hsla(20, 100%, 80%, 1);
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 12px;
+    background: linear-gradient(135deg, hsla(200, 30%, 10%, .5) 0, hsla(200, 30%, 30%, .5) 150%);
+    box-shadow: 0 0 6px hsla(200, 100%, 80%, 1);
+    transition: 0.8s;
+    backdrop-filter: blur(10px);
+}
+
+.leaderboard-header {
+    justify-content: space-between;
+    padding: 10px 40px;
+    position: sticky;
+    top: 0;
+    background: rgb(18, 28, 33);
+    color: hsla(200, 100%, 90%, .8);
+    letter-spacing: 1px;
+    font-size: 1.5em;
+    text-shadow: 0 0 6px hsla(200, 100%, 60%, .75);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-family: "Play", sans-serif;
+    z-index: 999;
+}
+
+.leaderboard-header,
+.leaderboard .leaderboard-item,
+.leaderboard .playerName,
+.leaderboard .status,
+.leaderboard .status div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.leaderboard .playerName {
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+    width: 100%;
+    min-width: max-content;
+}
+
+.leaderboard .status {
+    justify-content: space-between;
+}
+
+.leaderboard .status div {
+    width: 12rem;
+    justify-content: center;
+    text-align: center;
+}
+
+#leaderboard-body {
+    overflow: hidden;
+}
+
+.leaderboard-item {
+    justify-content: space-between;
+    color: hsla(200, 80%, 100%, .8);
+    padding: 15px 20px;
+}
+
+.leaderboard-item {
+    padding: 15px 20px;
+    margin: 0 20px;
+    border-bottom: 1px solid hsla(200, 50%, 70%, .5);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#leaderboard-body>div:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-item:hover {
+    background: hsl(180, 100%, 10%, 0.4);
+    border-radius: 5px;
+    transform: scale(1.01);
+}
+
+.leaderboard-item .playerName {
+    gap: 15px;
+    font-size: 1.3em;
+    animation: slide-right 1s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%) forwards;
+}
+
+.leaderboard-item .playerName>span {
+    color: hsla(200, 80%, 100%, .8);
+    text-shadow: 0 0 6px hsla(200, 100%, 60%, .75);
+}
+
+.leaderboard-item .playerName .subspace::after {
+    content: 'SUBSPACE';
+    background: linear-gradient(135deg, #6a1b9a, #9c27b0);
+    color: #ffffffe6;
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    font-family: 'Orbitron', Arial, sans-serif;
+    margin-left: 12px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px #0003;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    transform-origin: center left;
+    opacity: 0;
+    animation: show-subspace-tag 1s ease forwards;
+    animation-delay: 2s;
+}
+
+@keyframes show-subspace-tag {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+.leaderboard-item .ecpIcon {
+    width: 80px;
+    height: 40px;
+    transition: opacity 1s ease, transform 0.5s ease;
+}
+
+.leaderboard-item .ecpIcon.badge-shadow {
+    filter: drop-shadow(0px 0px 0px transparent);
+    animation: badge-shadow 5s ease forwards;
+}
+
+@keyframes badge-shadow {
+    0% {
+        filter: drop-shadow(0px 0px 0px transparent);
+    }
+
+    100% {
+        filter: drop-shadow(2px 4px 6px);
+    }
+}
+
+.leaderboard-item .ecpIcon:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.leaderboard-item .rank {
+    text-align: center;
+    color: #fff;
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px;
+    width: 4rem;
+}
+
+.leaderboard .rank span {
+    display: block;
+    width: 100%;
+    font-family: "Play", sans-serif;
+    font-weight: normal;
+}
+
+.leaderboard-item .rank.trophy {
+    position: relative;
+    font-size: 1rem;
+}
+
+.leaderboard-item .rank.trophy::before {
+    content: "\002e";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: STARBLAST, sans-serif;
+    font-size: 2.2rem;
+    animation: glow 3s linear infinite;
+}
+
+.leaderboard-item .rank.trophy.first::before {
+    color: gold;
+}
+
+.leaderboard-item .rank.trophy.second::before {
+    color: silver;
+}
+
+.leaderboard-item .rank.trophy.third::before {
+    color: #cd7f32;
+}
+
+.leaderboard .rank.trophy span {
+    position: relative;
+    top: -9px;
+    font-size: 16px;
+    color: #ffffff;
+    text-shadow: 0 0 5px;
+}
+
+.leaderboard-item .live-score {
+    font-size: 1.5em;
+    font-family: "Play", sans-serif;
+    animation: fade-in 1s ease-in-out forwards;
+    text-shadow: 0 0 6px hsla(200, 100%, 60%, .75);
+    color: hsla(200, 80%, 100%, .8);
+}
+
+@keyframes slide-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.text-glow {
+    animation: glow 4s linear infinite;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px, 0 0 20px;
+    }
+
+    50% {
+        text-shadow: 0 0 30px, 0 0 60px;
+    }
+
+    100% {
+        text-shadow: 0 0 10px, 0 0 20px;
+    }
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.textParticle {
+    display: inline-block;
+    position: relative;
+}
+
+.textParticle>.particle {
+    position: absolute;
+    background-color: #00ffff;
+    opacity: 0;
+    border-radius: 50%;
+    animation: particle-movement 3s ease-in infinite;
+}
+
+@keyframes particle-movement {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(-20%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-500%);
+    }
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff4;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    margin: 3.25px;
+    background-color: #fff;
+    box-shadow: 0 0 20px;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: #00ffc6;
+}
+
+input:checked+.slider:before {
+    transform: translateX(21px);
+}
+
+.loading {
+    margin: 80px 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #00ffc6;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: hsla(200, 50%, 70%, .5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(180, 100%, 70%, 0.8);
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    background-color: rgb(18, 28, 33)
+}
+
+@media (max-width: 938px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .region-switch button {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 1em;
+    }
+
+    .leaderboard {
+        width: 100%;
+    }
+
+    .leaderboard .status div {
+        width: 9rem;
+    }
+
+    .leaderboard-header {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .leaderboard-item {
+        padding: 10px 15px;
+        margin: 0;
+    }
+
+    .leaderboard-item .playerName {
+        font-size: 1em;
+    }
+
+    .leaderboard-item .rank {
+        font-size: 1.2rem;
+    }
+
+    .leaderboard-item .live-score {
+        font-size: 1em;
+    }
+
+    .options .menu {
+        width: 98%;
+        margin: 10px auto;
+        left: 50%;
+        transform: translateX(-50%) !important;
+    }
+}
+
+@media (max-width: 646px) {
+    .region-switch button {
+        margin-bottom: 0;
+        padding: 7px 11px;
+        font-size: 0.9em;
+    }
+
+    .leaderboard .status div {
+        width: 6rem;
+    }
+
+    .leaderboard-header {
+        padding: 5px 15px;
+        font-size: 0.7em;
+    }
+
+    .leaderboard-item {
+        padding: 10px;
+    }
+
+    .leaderboard-item .playerName {
+        font-size: 0.7em;
+        gap: 8px;
+    }
+
+    .leaderboard-item .ecpIcon {
+        width: 40px;
+        height: auto;
+    }
+
+    .leaderboard-item .rank.trophy::before {
+        font-size: 1.8rem;
+        top: -6px;
+    }
+
+    .leaderboard .rank.trophy span {
+        top: -6px;
+        font-size: 14px;
+    }
+
+    .leaderboard-item .rank {
+        font-size: 1rem;
+    }
+
+    .leaderboard-item .live-score {
+        font-size: 0.8em;
+    }
+
+    .leaderboard-item .playerName .subspace::after {
+        padding: 2px 8px;
+        font-size: 0.5rem;
+    }
+
+    .options .icon {
+        font-size: 0.95em;
+    }
+
+    footer {
+        font-size: 0.7em;
+        margin-top: 0;
+        padding: 6px 10px;
+        word-spacing: 2.5px;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (max-width: 642px) {
+    header h1 {
+        font-size: 1.65em;
+    }
+}
+
+@media (max-width: 564px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 524px) {
+    header h1 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 478px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 430px) {
+    .region-switch {
+        margin: 0;
+    }
+
+    .region-switch button {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 430px) {
+    header h1 {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 416px) {
+    header h1 {
+        font-size: 1.05em;
+    }
+
+    .leaderboard .status div {
+        width: 5rem;
+    }
+
+    .leaderboard-header .status div {
+        font-size: 0.7em;
+    }
+
+    .leaderboard-item .playerName {
+        font-size: 0.6em;
+        gap: 4px;
+    }
+
+    @keyframes badge-shadow {
+        0% {
+            filter: drop-shadow(0px 0px 0px transparent);
+        }
+
+        100% {
+            filter: drop-shadow(1px 2px 6px);
+        }
+    }
+
+    .leaderboard-item .ecpIcon {
+        width: 36px;
+    }
+
+    .leaderboard-item .rank.trophy::before {
+        font-size: 1.6rem;
+        top: -6px;
+    }
+
+    .leaderboard .rank.trophy span {
+        top: -6px;
+        font-size: 11px;
+    }
+
+    .leaderboard-item .rank {
+        font-size: 0.9rem;
+    }
+
+    .leaderboard-item .live-score {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 364px) {
+    header h1 {
+        font-size: 0.9em;
+    }
+
+    .leaderboard .status div {
+        width: 4rem;
+    }
+
+    .leaderboard .leaderboard-header .playerName {
+        font-size: 0.8em;
+    }
+
+    .leaderboard-header .status div {
+        font-size: 0.6em;
+    }
+
+    .leaderboard-item .ecpIcon {
+        width: 36px;
+    }
+
+    .leaderboard-item .rank.trophy::before {
+        font-size: 1.4rem;
+        top: -5px;
+    }
+
+    .leaderboard .rank.trophy span {
+        top: -4.5px;
+        font-size: 10px;
+    }
+
+    .leaderboard-item .rank {
+        font-size: 0.8rem;
+    }
+
+    .leaderboard-item .live-score {
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 358px) {
+    header h1 {
+        font-size: 0.8em;
+    }
+}

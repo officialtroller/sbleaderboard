@@ -706,3 +706,60 @@ input:checked+.slider:before {
         font-size: 0.8em;
     }
 }
+
+
+.playerfull {
+    width: 30%;
+    height: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-items: center;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    background: linear-gradient(135deg, hsla(200, 30%, 10%, .5) 0, hsla(200, 30%, 30%, .5) 150%);
+    box-shadow: 0 0 6px hsla(200, 100%, 80%, 1);
+    backdrop-filter: blur(10px);
+    display: grid;
+    z-index: 100;
+}
+
+.playerfull #close-btn {
+    background: transparent;
+    border-radius: 50%;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    color: white;
+    outline: none;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    top: 10px;
+    right: 10px;
+    text-shadow: 0 0 7px hsla(200, 100%, 80%, 1);
+    user-select: none;
+}
+
+.playerfull img {
+    position: relative;
+    top: 10px;justify-self: center;
+    border: 2px solid hsla(200, 100%, 90%, .8);
+    height: 40px;
+    width: 80px;
+}
+
+.playerfull span {
+    position: fixed;
+    font-size: larger;
+    margin-bottom: 20px;
+}
+
+.playerfull #playername {
+    top: 100px;
+}
+
+.playerfull #playerecp {
+    top: 150px;
+}

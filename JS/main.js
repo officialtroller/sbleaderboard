@@ -51,6 +51,11 @@ function updateLeaderboard(newData) {
 function createLeaderboardItem(player, rank) {
     const leaderboardItem = document.createElement('div');
     leaderboardItem.classList.add('leaderboard-item');
+    leaderboardItem.id = player.id;
+
+    leaderboardItem.addEventListener('click', () => {
+        buildplayerinfo(player);
+    });
 
     const color = getColorBasedOnECP(player.ecp.finish);
 
@@ -98,7 +103,7 @@ function getColorBasedOnECP(finish) {
         case "titanium": return "#999999";
         case "alloy": return "#e4e5e5";
         case "carbon": return "#464646";
-        case "zinc" : return "#ffffff";
+        case "zinc": return "#ffffff";
         default: return "#ff0000";
     }
 }
@@ -193,3 +198,63 @@ function initialize() {
 }
 
 initialize();
+
+function closeplayerinfo() {
+    let element = document.getElementById("playerinfull");
+    var opacity1 = 1;
+    var interval = setInterval(function () {
+        opacity1 -= 0.1;
+        element.style.opacity = opacity1;
+        if (opacity1 <= 0) {
+            clearInterval(interval);
+            element.remove();
+        }
+    }, 30);
+}
+
+async function buildplayerinfo(player) {
+    let existsfr = document.getElementById('playerinfull');
+
+    // Neues Element erstellen, bevor das alte gelöscht wird
+    let element = document.createElement("div");
+    element.classList.add('playerfull');
+    element.id = 'playerinfull';
+    element.style.opacity = "0"; // Starte mit opacity 0 für das fade-in
+    element.innerHTML = `
+        <img src="${await getECPIcon(player.ecp)}" alt="">
+        <button id="close-btn" onclick="closeplayerinfo()">X</button>
+        <span id="playername">Name: ${player.name}</span>
+        <br>
+        <span id="playerecp">ECP:<br>
+            <li>Badge: ${player.ecp.badge}</li><br>
+            <li>Finish: ${player.ecp.finish}</li><br>
+            <li>Laser: ${player.ecp.laser}</li>
+        </span>
+    `;
+
+    // Füge das neue Element hinzu, bevor das alte entfernt wird
+    document.getElementsByTagName("main")[0].appendChild(element);
+
+    // Falls das alte Element existiert, führe das fade-out aus und entferne es danach
+    if (existsfr) {
+        var opacity1 = 1; // Startwert für das fade-out des alten Elements
+        var fadeOutInterval = setInterval(function () {
+            opacity1 -= 0.1;
+            existsfr.style.opacity = opacity1;
+            if (opacity1 <= 0) {
+                clearInterval(fadeOutInterval);
+                existsfr.remove(); // Entferne das alte Element, wenn fade-out abgeschlossen ist
+            }
+        }, 30);
+    }
+
+    // Führe das fade-in für das neue Element durch
+    var opacity2 = 0; // Startwert für das fade-in des neuen Elements
+    var fadeInInterval = setInterval(function () {
+        opacity2 += 0.1;
+        element.style.opacity = opacity2;
+        if (opacity2 >= 1) {
+            clearInterval(fadeInInterval); // Beende das fade-in, wenn opacity 1 erreicht ist
+        }
+    }, 30);
+}

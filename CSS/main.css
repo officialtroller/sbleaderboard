@@ -763,3 +763,11 @@ input:checked+.slider:before {
 .playerfull #playerecp {
     top: 150px;
 }
+
+
+@media (max-width: 768px) {
+    .playerfull {
+        width: 100%;
+        z-index: 100;
+    }
+}

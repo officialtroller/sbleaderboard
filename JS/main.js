@@ -215,11 +215,10 @@ function closeplayerinfo() {
 async function buildplayerinfo(player) {
     let existsfr = document.getElementById('playerinfull');
 
-    // Neues Element erstellen, bevor das alte gelöscht wird
     let element = document.createElement("div");
     element.classList.add('playerfull');
     element.id = 'playerinfull';
-    element.style.opacity = "0"; // Starte mit opacity 0 für das fade-in
+    element.style.opacity = "0";
     element.innerHTML = `
         <img src="${await getECPIcon(player.ecp)}" alt="">
         <button id="close-btn" onclick="closeplayerinfo()">X</button>
@@ -232,29 +231,31 @@ async function buildplayerinfo(player) {
         </span>
     `;
 
-    // Füge das neue Element hinzu, bevor das alte entfernt wird
     document.getElementsByTagName("main")[0].appendChild(element);
 
-    // Falls das alte Element existiert, führe das fade-out aus und entferne es danach
     if (existsfr) {
-        var opacity1 = 1; // Startwert für das fade-out des alten Elements
+        var opacity1 = 1;
         var fadeOutInterval = setInterval(function () {
             opacity1 -= 0.1;
             existsfr.style.opacity = opacity1;
             if (opacity1 <= 0) {
                 clearInterval(fadeOutInterval);
-                existsfr.remove(); // Entferne das alte Element, wenn fade-out abgeschlossen ist
+                existsfr.remove();
             }
         }, 30);
     }
 
-    // Führe das fade-in für das neue Element durch
-    var opacity2 = 0; // Startwert für das fade-in des neuen Elements
+    var opacity2 = 0;
     var fadeInInterval = setInterval(function () {
         opacity2 += 0.1;
         element.style.opacity = opacity2;
         if (opacity2 >= 1) {
-            clearInterval(fadeInInterval); // Beende das fade-in, wenn opacity 1 erreicht ist
+            clearInterval(fadeInInterval);
         }
     }, 30);
 }
+window.onload = function () {
+    if (/(ipad|iphone|ipod|android)/gi.test(navigator.userAgent)) {
+        window.location.href = "/phone.html";
+    }
+};

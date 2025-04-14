@@ -59,7 +59,7 @@ function createLeaderboardItem(player, rank) {
 
     const color = getColorBasedOnECP(player.ecp.finish);
 
-    const originalfinishes = ['x27', 'alloy', 'fullcolor', 'titanium', 'gold', 'carbon', 'zinc'];
+    const originalfinishes = ['alloy', 'titanium', 'gold', 'carbon', 'zinc'];
     const originalbadges = [
         'star',
         'reddit',

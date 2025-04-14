@@ -272,13 +272,11 @@ function closeplayerinfo() {
 async function buildplayerinfo(player) {
     let existsfr = document.getElementById('playerinfull');
 
-    // Create modal element
     let element = document.createElement('div');
     element.classList.add('playerfull');
     element.id = 'playerinfull';
     element.style.opacity = '0';
 
-    // Create content with proper HTML structure
     element.innerHTML = `
         <img src="${await getECPIcon(player.ecp)}" alt="Player badge">
         <button id="close-btn" onclick="closeplayerinfo()">X</button>
@@ -295,7 +293,6 @@ async function buildplayerinfo(player) {
 
     document.getElementsByTagName('main')[0].appendChild(element);
 
-    // Handle fade out of existing modal
     if (existsfr) {
         var opacity1 = 1;
         var fadeOutInterval = setInterval(function () {
@@ -308,7 +305,6 @@ async function buildplayerinfo(player) {
         }, 30);
     }
 
-    // Handle fade in of new modal
     var opacity2 = 0;
     var fadeInInterval = setInterval(function () {
         opacity2 += 0.1;

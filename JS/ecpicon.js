@@ -16,14 +16,8 @@ window.initECPSetup = function (initializer) {
         }, t.prototype.drawMaterial = function (t, e, i) {
             var s, l, n, a, o, r, h, O, u, d, c;
             switch (this.finish) {
-                case "x27":
-                    l = t.createLinearGradient(0, 0, 0, i), l.addColorStop(0, "hsla(220,100%,30%)"), l.addColorStop(.5, "hsla(200,100%,70%)"), l.addColorStop(.5, "hsla(220,100%,40%)"), l.addColorStop(1, "hsla(200,100%,70%)");
-                    break;
                 case "alloy":
                     l = t.createLinearGradient(0, 0, 0, i), l.addColorStop(0, "#68A"), l.addColorStop(.5, "#FFF"), l.addColorStop(.5, "#765"), l.addColorStop(1, "#CCC");
-                    break;
-                case "fullcolor":
-                    l = t.createLinearGradient(0, 0, 0, i), l.addColorStop(0, "hsl(" + this.hue + ",90%,50%)"), l.addColorStop(.5, "hsl(" + this.hue + ",90%,70%)"), l.addColorStop(.5, "hsl(" + this.hue + ",90%,30%)"), l.addColorStop(1, "hsl(" + this.hue + ",90%,60%)");
                     break;
                 case "titanium":
                     l = t.createLinearGradient(0, 0, 0, i), l.addColorStop(0, "#444"), l.addColorStop(.5, "#AAA"), l.addColorStop(.5, "#444"), l.addColorStop(1, "#111");

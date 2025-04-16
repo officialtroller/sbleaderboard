@@ -130,13 +130,9 @@ function createLeaderboardItem(player, rank) {
     leaderboardItem.innerHTML = `
         <div class="playerName">
             <img style="opacity: 0; ${rank <= 3 ? `color: ${color};` : `filter: drop-shadow(2px 4px 6px ${dropShadowColor});`}" class="ecpIcon no-select ${badgeClass}" src="" data-id="${player.id}">
-<<<<<<< HEAD
             <span class="${textClass} ${subspaceClass}" style="${isFinishInvalid || isBadgeInvalid ? 'color: red;text-shadow: 0 0 10px red;' : ''}">${player.name}</span>${
         subspaceClass ? '<i>i</i>' : ''
     }
-=======
-            <span class="${textClass} ${subspaceClass}" style="${isFinishInvalid || isBadgeInvalid ? 'color: red;text-shadow: 0 0 10px red;' : ''}">${player.name}</span>
->>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2
         </div>
         <div class="status">
             <div class="${rank <= 3 ? `rank trophy no-select text-glow ${getRankClass(rank)}` : 'rank'}">
@@ -278,19 +274,11 @@ function closeplayerinfo() {
 async function buildplayerinfo(player) {
     let existsfr = document.getElementById('playerinfull');
 
-<<<<<<< HEAD
-    // Create modal element
-=======
->>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2
     let element = document.createElement('div');
     element.classList.add('playerfull');
     element.id = 'playerinfull';
     element.style.opacity = '0';
 
-<<<<<<< HEAD
-    // Create content with proper HTML structure
-=======
->>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2
     element.innerHTML = `
         <img src="${await getECPIcon(player.ecp)}" alt="Player badge">
         <button id="close-btn" onclick="closeplayerinfo()">X</button>
@@ -307,10 +295,6 @@ async function buildplayerinfo(player) {
 
     document.getElementsByTagName('main')[0].appendChild(element);
 
-<<<<<<< HEAD
-    // Handle fade out of existing modal
-=======
->>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2
     if (existsfr) {
         var opacity1 = 1;
         var fadeOutInterval = setInterval(function () {
@@ -323,10 +307,6 @@ async function buildplayerinfo(player) {
         }, 30);
     }
 
-<<<<<<< HEAD
-    // Handle fade in of new modal
-=======
->>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2
     var opacity2 = 0;
     var fadeInInterval = setInterval(function () {
         opacity2 += 0.1;

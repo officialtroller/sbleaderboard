@@ -259,11 +259,11 @@ initialize();
 function closeplayerinfo() {
     const modal = document.getElementById('playerinfull');
     if (modal) {
-        let opacity = 1;
+        let opacity0 = 1;
         const fadeOutInterval = setInterval(function () {
-            opacity -= 0.1;
-            modal.style.opacity = opacity;
-            if (opacity <= 0) {
+            opacity0 -= 0.1;
+            modal.style.opacity = opacity0;
+            if (opacity0 <= 0) {
                 clearInterval(fadeOutInterval);
                 modal.remove();
             }

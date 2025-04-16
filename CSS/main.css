@@ -849,7 +849,6 @@ input:checked + .slider:before {
         font-size: 0.8em;
     }
 }
-<<<<<<< HEAD
 
 .leaderboard-item .playerName i {
     position: absolute;
@@ -911,5 +910,3 @@ input:checked + .slider:before {
     opacity: 1;
     visibility: visible;
 }
-=======
->>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2

@@ -129,6 +129,8 @@ header h1 {
     padding-right: 10px;
     width: 100%;
     min-width: max-content;
+    overflow: visible;
+    position: relative;
 }
 
 .leaderboard .status {
@@ -847,3 +849,67 @@ input:checked + .slider:before {
         font-size: 0.8em;
     }
 }
+<<<<<<< HEAD
+
+.leaderboard-item .playerName i {
+    position: absolute;
+    text-decoration: none;
+    font-style: normal;
+    border: 1px solid;
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: help;
+    text-align: center;
+    margin: 5px;
+    right: 5px;
+    line-height: 15px;
+}
+
+.leaderboard-item .playerName i::after {
+    content: 'This is not a subspace detector. This is the ECP of the \'free ECP\' feature of subspace only.';
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+    margin-top: 8px;
+    white-space: normal;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.leaderboard-item .playerName i:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.leaderboard-item .playerName i::before {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 100%;
+    border: 6px solid transparent;
+    border-bottom-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    margin-top: -4px;
+}
+
+.leaderboard-item .playerName i:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+=======
+>>>>>>> 962d8d1af27731a1e21f5c172ec5315581167aa2

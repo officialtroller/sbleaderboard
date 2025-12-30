@@ -126,7 +126,6 @@ function createLeaderboardItem(player, rank) {
     const textClass = rank === 1 ? 'textParticle' : '';
     const subspaceClass = player.id === '5a03846a0a6d212bf327f57b' ? 'subspace' : '';
     const dropShadowColor = isFinishInvalid || isBadgeInvalid ? 'red' : 'black';
-    const dropShadowColor = isFinishInvalid || isBadgeInvalid ? 'red' : 'black';
 
     const hasLowercase = player.name !== player.name.toUpperCase();
     const isRed = isFinishInvalid || isBadgeInvalid;
@@ -321,4 +320,5 @@ async function buildplayerinfo(player) {
         }
     }, 30);
 }
+
 

@@ -126,11 +126,16 @@ function createLeaderboardItem(player, rank) {
     const textClass = rank === 1 ? 'textParticle' : '';
     const subspaceClass = player.id === '5a03846a0a6d212bf327f57b' ? 'subspace' : '';
     const dropShadowColor = isFinishInvalid || isBadgeInvalid ? 'red' : 'black';
+    const dropShadowColor = isFinishInvalid || isBadgeInvalid ? 'red' : 'black';
+
+    const hasLowercase = player.name !== player.name.toUpperCase();
+    const isRed = isFinishInvalid || isBadgeInvalid;
+    const isYellow = !isRed && hasLowercase;
 
     leaderboardItem.innerHTML = `
         <div class="playerName">
             <img style="opacity: 0; ${rank <= 3 ? `color: ${color};` : `filter: drop-shadow(2px 4px 6px ${dropShadowColor});`}" class="ecpIcon no-select ${badgeClass}" src="" data-id="${player.id}">
-            <span class="${textClass} ${subspaceClass}" style="${isFinishInvalid || isBadgeInvalid ? 'color: red;text-shadow: 0 0 10px red;' : ''}">${player.name}</span>${
+            <span class="${textClass} ${subspaceClass}" style="${isRed ? 'color: red;text-shadow: 0 0 10px red;' : isYellow ? 'color: yellow;text-shadow: 0 0 10px yellow;' : ''}">${player.name}</span>${
         subspaceClass ? '<i>i</i>' : ''
     }
         </div>
@@ -316,3 +321,4 @@ async function buildplayerinfo(player) {
         }
     }, 30);
 }
+

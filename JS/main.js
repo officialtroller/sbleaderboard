@@ -26,7 +26,6 @@ function formatPlayerData(players) {
     return players
         .filter(player => player.name && player.name.trim() !== '')
         .sort((a, b) => b.live_rating - a.live_rating)
-        .slice(0, 100)
         .map(player => ({
             id: player.id,
             name: player.name,
@@ -128,15 +127,18 @@ function createLeaderboardItem(player, rank) {
     const dropShadowColor = isFinishInvalid || isBadgeInvalid ? 'red' : 'black';
 
     const hasLowercase = player.name !== player.name.toUpperCase();
+
+    const laser = Number(player.ecp.laser);
+    const isLaserCheat = !Number.isFinite(laser) || laser < 0 || laser > 3;
     const isRed = isFinishInvalid || isBadgeInvalid;
-    const isYellow = !isRed && hasLowercase;
+    const isYellow = (!isRed && hasLowercase) || (!isRed && !isValidLaser);
 
     leaderboardItem.innerHTML = `
         <div class="playerName">
             <img style="opacity: 0; ${rank <= 3 ? `color: ${color};` : `filter: drop-shadow(2px 4px 6px ${dropShadowColor});`}" class="ecpIcon no-select ${badgeClass}" src="" data-id="${player.id}">
             <span class="${textClass} ${subspaceClass}" style="${isRed ? 'color: red;text-shadow: 0 0 10px red;' : isYellow ? 'color: yellow;text-shadow: 0 0 10px yellow;' : ''}">${player.name}</span>${
-        subspaceClass ? '<i>i</i>' : ''
-    }
+                subspaceClass ? '<i>i</i>' : ''
+            }
         </div>
         <div class="status">
             <div class="${rank <= 3 ? `rank trophy no-select text-glow ${getRankClass(rank)}` : 'rank'}">
@@ -320,5 +322,3 @@ async function buildplayerinfo(player) {
         }
     }, 30);
 }
-
-

@@ -131,7 +131,7 @@ function createLeaderboardItem(player, rank) {
     const laser = Number(player.ecp.laser);
     const isLaserCheat = !Number.isFinite(laser) || laser < 0 || laser > 3;
     const isRed = isFinishInvalid || isBadgeInvalid;
-    const isYellow = (!isRed && hasLowercase) || (!isRed && !isValidLaser);
+    const isYellow = (!isRed && hasLowercase) || (!isRed && isLaserCheat);
 
     leaderboardItem.innerHTML = `
         <div class="playerName">
@@ -322,3 +322,4 @@ async function buildplayerinfo(player) {
         }
     }, 30);
 }
+
